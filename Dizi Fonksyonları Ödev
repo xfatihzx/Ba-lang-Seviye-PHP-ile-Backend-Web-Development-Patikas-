@@ -1,0 +1,25 @@
+<?php
+echo "<pre>";
+$planets = ["mercury", "venus", "earth","mars","jupiter","saturn","uranus","neptune","","", NULL];
+$mapArr = array_map(function($e){
+    global $planets;
+    if($e == ""){
+        return NULL;}
+    else{
+        return $e;}
+}, $planets);
+$filterArr = array_filter($mapArr, function($e){
+    return $e != NULL ? $e : false;
+});
+
+function ramdomsArr($i){
+    global $filterArr;
+    $result = array_flip($filterArr);
+    return array_rand($result, $i);
+}
+
+print_r(ramdomsArr(2));
+print_r(ramdomsArr(3));
+print_r(ramdomsArr(2));
+print_r(ramdomsArr(4));
+print_r(ramdomsArr(5));
